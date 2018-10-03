@@ -1,6 +1,6 @@
   <!-- Client Authentication Settings -->
   <auth>
-  <%- if @ossec_authd_enabled -%>
+  <%- if @manage_client_keys == 'authd' -%>
     <disabled>no</disabled>
     <port><%= @ossec_auth_port %></port>
     <%- if @ossec_auth_use_srcip -%>
