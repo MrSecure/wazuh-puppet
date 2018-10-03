@@ -2,7 +2,7 @@
   <auth>
   <%- if @ossec_authd_enabled -%>
     <disabled>no</disabled>
-    <port><%= @ossec_auth_port =%></port>
+    <port><%= @ossec_auth_port %></port>
     <%- if @ossec_auth_use_srcip -%>
     <use_source_ip>yes</use_source_ip>
     <%- end -%>
