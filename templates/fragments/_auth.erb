@@ -12,6 +12,11 @@
     <%- if @ossec_auth_force_insert -%>
     <force_insert>yes</force_insert>
     <%- end -%>
+    <%- if @ossec_auth_force_time -%>
+    <force_time><%= @ossec_auth_force_time -%></force_time>
+    <%- else %>
+    <force_time>0</force_time>
+    <%- end -%>
     <%- if @ossec_auth_purge -%>
     <purge>yes</purge>
     <%- end -%>

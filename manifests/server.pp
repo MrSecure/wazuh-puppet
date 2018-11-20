@@ -61,6 +61,7 @@ class wazuh::server (
   Boolean $ossec_auth_use_srcip        = false,
   Boolean $ossec_auth_use_password     = false,
   Boolean $ossec_auth_force_insert     = false,
+  Integer $ossec_auth_force_time       = 0,
   Boolean $ossec_auth_purge            = false,
 ) inherits wazuh::params {
   validate_bool(
