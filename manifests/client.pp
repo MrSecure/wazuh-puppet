@@ -45,6 +45,7 @@ class wazuh::client(
   $service_has_status              = $::wazuh::params::service_has_status,
   $ossec_conf_template             = 'wazuh/wazuh_agent.conf.erb',
   Boolean $manage_firewall         = $::wazuh::params::manage_firewall,
+  Hash $ossec_rootcheck_audits     = $::wazuh::params::ossec_rootcheck_audits,
 ) inherits wazuh::params {
   validate_bool(
     $ossec_active_response, $ossec_rootcheck,
@@ -156,7 +157,7 @@ class wazuh::client(
     }
   } elsif ($manage_client_keys == 'authd') {
     if ($::kernel == 'Linux') {
-    
+
       # Is this really Linux only?
       $ossec_server_address = pick($ossec_server_ip, $ossec_server_hostname)
 

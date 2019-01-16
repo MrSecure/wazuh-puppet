@@ -57,6 +57,11 @@ class wazuh::params {
             '/var/ossec/logs/active-responses.log' => 'syslog',
           }
 
+          $ossec_rootcheck_audits = [
+            '/var/ossec/etc/shared/system_audit_rcl.txt',
+            '/var/ossec/etc/shared/system_audit_ssh.txt',
+            '/var/ossec/etc/shared/cis_debian_linux_rcl.txt',
+          ]
           case $::lsbdistcodename {
             'xenial': {
               $server_service = 'wazuh-manager'
@@ -134,6 +139,11 @@ class wazuh::params {
                     profiles => ['xccdf_org.ssgproject.content_profile_pci-dss', 'xccdf_org.ssgproject.content_profile_server',]
                   }
                 }
+                $ossec_rootcheck_audits = [
+                  '/var/ossec/etc/shared/system_audit_rcl.txt',
+                  '/var/ossec/etc/shared/system_audit_ssh.txt',
+                  '/var/ossec/etc/shared/cis_rhel6_linux_rcl.txt',
+                ]
               }
               if ( $::operatingsystemrelease =~ /^7.*/ ) {
                 $ossec_service_provider = 'systemd'
@@ -144,6 +154,11 @@ class wazuh::params {
                     profiles => ['xccdf_org.ssgproject.content_profile_pci-dss', 'xccdf_org.ssgproject.content_profile_common',]
                   }
                 }
+                $ossec_rootcheck_audits = [
+                  '/var/ossec/etc/shared/system_audit_rcl.txt',
+                  '/var/ossec/etc/shared/system_audit_ssh.txt',
+                  '/var/ossec/etc/shared/cis_rhel7_linux_rcl.txt',
+                ]
               }
             }
             /^(RedHat|OracleLinux)$/: {
@@ -159,6 +174,11 @@ class wazuh::params {
                     'type' => 'xccdf',
                   }
                 }
+                $ossec_rootcheck_audits = [
+                  '/var/ossec/etc/shared/system_audit_rcl.txt',
+                  '/var/ossec/etc/shared/system_audit_ssh.txt',
+                  '/var/ossec/etc/shared/cis_rhel6_linux_rcl.txt',
+                ]
               }
               if ( $::operatingsystemrelease =~ /^7.*/ ) {
                 $ossec_service_provider = 'systemd'
@@ -171,7 +191,12 @@ class wazuh::params {
                   'cve-redhat-7-ds.xml' => {
                     'type' => 'xccdf',
                   }
-                }
+                }              
+                $ossec_rootcheck_audits = [
+                  '/var/ossec/etc/shared/system_audit_rcl.txt',
+                  '/var/ossec/etc/shared/system_audit_ssh.txt',
+                  '/var/ossec/etc/shared/cis_rhel7_linux_rcl.txt',
+                ]
               }
             }
             'Fedora': {
@@ -185,7 +210,10 @@ class wazuh::params {
                   },
                 }
               }
-            }
+              $ossec_rootcheck_audits = [
+                '/var/ossec/etc/shared/system_audit_rcl.txt',
+                '/var/ossec/etc/shared/system_audit_ssh.txt',
+              ]            }
             default: { fail('This ossec module has not been tested on your distribution') }
           }
         }
@@ -217,6 +245,11 @@ class wazuh::params {
       $validate_cmd_conf = undef
       # Pushed by shared agent config now
       $default_local_files = {}
+      $ossec_rootcheck_audits = [
+        '/var/ossec/etc/shared/win_audit_rcl.txt',
+        '/var/ossec/etc/shared/cis_win2012r2_memberL1_rcl.txt',
+        '/var/ossec/etc/shared/cis_win2012r2_domainL1_rcl.txt',
+        ]
     }
   default: { fail('This ossec module has not been tested on your distribution') }
   }
