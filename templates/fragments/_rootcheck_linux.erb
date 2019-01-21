@@ -14,8 +14,8 @@
 
     <rootkit_files>/var/ossec/etc/shared/rootkit_files.txt</rootkit_files>
     <rootkit_trojans>/var/ossec/etc/shared/rootkit_trojans.txt</rootkit_trojans>
-<%- if @system_audits != [] -%>
-  <%- @system_audits.each do |audit_file| -%>
+<%- if @ossec_rootcheck_audits != [] -%>
+  <%- @ossec_rootcheck_audits.each do |audit_file| -%>
     <system_audit><%= audit_file %></system_audit>
   <%- end -%>
 <%- end -%>
