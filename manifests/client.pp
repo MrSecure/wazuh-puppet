@@ -192,7 +192,7 @@ class wazuh::client(
           require => Package[$agent_package_name],
           notify  => Service[$agent_service_name],
           before  => File[$wazuh::params::keys_file]
-       }
+        }
       } else {
         exec { 'agent-auth-without-pwd':
           command => $agent_auth_command,
