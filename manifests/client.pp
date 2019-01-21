@@ -187,7 +187,9 @@ class wazuh::client(
 
       if $agent_auth_password {
         exec { 'agent-auth-with-pwd':
+          # lint:ignore:security_class_or_define_parameter_in_exec lint:ignore:security_password_variable_in_exec
           command => "${agent_auth_command} -P '${agent_auth_password}'",
+          # lint:endignore
           unless  => "/bin/egrep -q '.' ${::wazuh::params::keys_file}",
           require => Package[$agent_package_name],
           notify  => Service[$agent_service_name],
