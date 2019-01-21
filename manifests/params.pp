@@ -128,6 +128,10 @@ class wazuh::params {
               # Probably best to leave this undef until we can
               # write/find a release-specific file.
               $wodle_openscap_content = undef
+              $ossec_rootcheck_audits = [
+                '/var/ossec/etc/shared/system_audit_rcl.txt',
+                '/var/ossec/etc/shared/system_audit_ssh.txt',
+              ]
             }
             'CentOS': {
               if ( $::operatingsystemrelease =~ /^6.*/ ) {
