@@ -191,7 +191,7 @@ class wazuh::params {
                   'cve-redhat-7-ds.xml' => {
                     'type' => 'xccdf',
                   }
-                }              
+                }
                 $ossec_rootcheck_audits = [
                   '/var/ossec/etc/shared/system_audit_rcl.txt',
                   '/var/ossec/etc/shared/system_audit_ssh.txt',
