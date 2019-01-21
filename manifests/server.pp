@@ -66,6 +66,7 @@ class wazuh::server (
   Boolean $ossec_auth_use_password     = false,
   Boolean $ossec_auth_force_insert     = false,
   Boolean $ossec_auth_purge            = false,
+  Array $custom_fragments              = [],
 ) inherits wazuh::params {
   validate_bool(
     $ossec_active_response, $ossec_rootcheck,
